@@ -16,5 +16,6 @@ namespace Library.Domain.Entities
         { }
 
         public ICollection<StudentAddress> StudentAddresses { get; set; } = new HashSet<StudentAddress>();
+        public ICollection<BorrowingRecord> BorrowingRecords { get; set;} = new HashSet<BorrowingRecord>();
     }
 }
