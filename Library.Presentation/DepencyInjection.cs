@@ -1,7 +1,10 @@
 ﻿using Library.Application;
 using Library.Application.Services;
 using Library.Infrastructure;
+using Library.Infrastructure.DB;
 using Library.Presentation.Controllers;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -24,6 +27,24 @@ namespace Library.Presentation
                     {
                         options.JsonSerializerOptions.Converters.Add(new DateOnlyJsonConverter());
                     });
+        }
+
+        public static void PresentationLayerWebApplicationServices(this WebApplication app)
+        {
+            
+
+            using var scope = app.Services.CreateScope();
+            var services = scope.ServiceProvider;
+            var context = services.GetRequiredService<AppDbContext>();
+            try
+            {
+                context.Database.Migrate();
+                Console.WriteLine("Migrations applying successfully completed");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error applying migrations: {ex.Message}");
+            }
         }
     }
 }

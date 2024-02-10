@@ -15,7 +15,7 @@ namespace Library.Infrastructure.Services
 {
     public class AuthService : IAuthService
     {
-        private readonly JWTConfiguration _configuration;
+        public JWTConfiguration _configuration;
         public AuthService(IOptions<JWTConfiguration> config)
         {
             _configuration = config.Value;

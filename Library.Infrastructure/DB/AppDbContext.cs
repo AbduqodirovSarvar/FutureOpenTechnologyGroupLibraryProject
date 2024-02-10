@@ -1,5 +1,6 @@
 ﻿using Library.Application.Abstractions;
 using Library.Domain.Entities;
+using Library.Infrastructure.DB.Configurations;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -11,9 +12,12 @@ namespace Library.Infrastructure.DB
 {
     public class AppDbContext : DbContext, IAppDbContext
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options)
-            : base(options) 
-        { }
+        private readonly IAuthService _authService;
+        public AppDbContext(DbContextOptions<AppDbContext> options, IAuthService authService)
+            : base(options)
+        {
+            _authService = authService;
+        }
 
         public DbSet<User> Users { get; set; }
         public DbSet<Student> Students { get; set; }
@@ -35,10 +39,7 @@ namespace Library.Infrastructure.DB
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
-        }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.EnableSensitiveDataLogging();
+            modelBuilder.ApplyConfiguration(new UserTypeConfiguration(_authService));
         }
     }
 }
