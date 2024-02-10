@@ -25,5 +25,6 @@ namespace Library.Domain.Entities
         public Publisher? Publisher { get; set; }
 
         public ICollection<BookAuthor> Authors { get; set; } = new HashSet<BookAuthor>();
+        public ICollection<BorrowingRecord> BorrowingRecords { get; set;} = new HashSet<BorrowingRecord>();
     }
 }

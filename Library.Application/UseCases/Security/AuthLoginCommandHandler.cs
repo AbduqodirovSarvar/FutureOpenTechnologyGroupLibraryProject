@@ -2,6 +2,7 @@
 using Library.Application.Abstractions;
 using Library.Application.Exceptions;
 using Library.Application.Models.ViewModels;
+using Library.Domain.Enums;
 using Library.Domain.Exceptions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -50,9 +51,21 @@ namespace Library.Application.UseCases.Security
                     new Claim(ClaimTypes.Role, user.Role.ToString())
                 };
 
+            if(user.Role == UserRole.SuperAdmin)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, UserRole.Admin.ToString()));
+                claims.Add(new Claim(ClaimTypes.Role, UserRole.None.ToString()));
+            }
+            if(user.Role == UserRole.Admin)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, UserRole.None.ToString()));
+            }
+
+            var result = new LoginViewModel(_authService.GetAccessToken(claims.ToArray()), _mapper.Map<UserViewModel>(user));
+
             _logger.LogInformation("An access token has been issued to the identifier ID: {Identifier}", user.Id);
 
-            return new LoginViewModel(_authService.GetAccessToken(claims.ToArray()), _mapper.Map<UserViewModel>(user));
+            return result;
         }
     }
 }

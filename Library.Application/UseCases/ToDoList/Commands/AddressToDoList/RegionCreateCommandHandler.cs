@@ -24,7 +24,7 @@ namespace Library.Application.UseCases.ToDoList.Commands.AddressToDoList
             var city = await _mediator.Send(new CityCreateCommand(request.CityName, request.CountryName), cancellationToken);
             var region = await _context.Regions
                                        .Include(x => x.City)
-                                       .ThenInclude(x => x.Country)
+                                       .ThenInclude(x => x != null ? x.Country : null)
                                        .FirstOrDefaultAsync(x => x.Name == request.RegionName && x.CityId == city.Id, cancellationToken);
             if (region == null)
             {

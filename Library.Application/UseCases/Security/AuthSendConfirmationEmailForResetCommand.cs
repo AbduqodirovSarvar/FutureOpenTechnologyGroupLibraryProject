@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Library.Application.UseCases.Security
 {
-    public class SendConfirmationEmailForResetCommand : IRequest
+    public class AuthSendConfirmationEmailForResetCommand : IRequest
     {
         [Required]
         [EmailAddress]

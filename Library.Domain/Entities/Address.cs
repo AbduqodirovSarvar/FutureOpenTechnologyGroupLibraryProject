@@ -17,5 +17,7 @@ namespace Library.Domain.Entities
         public string Street {  get; set; } = string.Empty;
         public int HomeNumber { get; set; }
         public int? ApartmentNumber { get; set; }
+        public PublisherAddress? Publisher {  get; set; }
+        public StudentAddress? Student { get; set; }
     }
 }

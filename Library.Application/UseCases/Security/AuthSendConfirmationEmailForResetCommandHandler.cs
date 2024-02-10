@@ -10,19 +10,19 @@ using System.Threading.Tasks;
 
 namespace Library.Application.UseCases.Security
 {
-    public class SendConfirmationEmailForResetCommandHandler : IRequestHandler<SendConfirmationEmailForResetCommand>
+    public class AuthSendConfirmationEmailForResetCommandHandler : IRequestHandler<AuthSendConfirmationEmailForResetCommand>
     {
         private readonly IAppDbContext _context;
-        private readonly ILogger<SendConfirmationEmailForResetCommandHandler> _logger;
-        public SendConfirmationEmailForResetCommandHandler(
+        private readonly ILogger<AuthSendConfirmationEmailForResetCommandHandler> _logger;
+        public AuthSendConfirmationEmailForResetCommandHandler(
             IAppDbContext appDbContext,
-            ILogger<SendConfirmationEmailForResetCommandHandler> logger
+            ILogger<AuthSendConfirmationEmailForResetCommandHandler> logger
             )
         {
             _context = appDbContext;
             _logger = logger;
         }
-        public async Task Handle(SendConfirmationEmailForResetCommand request, CancellationToken cancellationToken)
+        public async Task Handle(AuthSendConfirmationEmailForResetCommand request, CancellationToken cancellationToken)
         {
             var user = await _context.Users.FirstOrDefaultAsync(x => x.Email == request.Email, cancellationToken);
             _logger.LogInformation("not implemented");
