@@ -17,5 +17,6 @@ namespace Library.Domain.Entities
             Biography = biography;
         }
         public string? Biography { get; set; }
+        public ICollection<BookAuthor> Books { get; set; } = new HashSet<BookAuthor>();
     }
 }

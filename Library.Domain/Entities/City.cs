@@ -19,5 +19,6 @@ namespace Library.Domain.Entities
 
         public Guid CountryId { get; set; }
         public Country? Country { get; set; }
+        public ICollection<Region> Regions { get; set; } = new HashSet<Region>();
     }
 }

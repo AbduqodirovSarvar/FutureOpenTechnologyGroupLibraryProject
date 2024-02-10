@@ -15,5 +15,7 @@ namespace Library.Domain.Entities
             : base(name)
         {
         }
+
+        public ICollection<Book> Books { get; set; } = new HashSet<Book>();
     }
 }

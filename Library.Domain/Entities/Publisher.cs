@@ -15,5 +15,9 @@ namespace Library.Domain.Entities
         :base(name)
         {
         }
+
+        public ICollection<Book> Books { get; set; } = new HashSet<Book>();
+        public ICollection<PublisherAddress> Addresses { get; set; } = new HashSet<PublisherAddress>();
+        public ICollection<ContactInformation> Contacts { get; set; } = new HashSet<ContactInformation>();
     }
 }

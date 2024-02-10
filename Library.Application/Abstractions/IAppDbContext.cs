@@ -24,6 +24,7 @@ namespace Library.Application.Abstractions
         DbSet<Book> Books { get; set; }
         DbSet<Author> Authors { get; set; }
         DbSet<BookAuthor> BookAuthors { get; set; }
+        DbSet<BorrowingRecord> BorrowingRecords { get; set; }
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }

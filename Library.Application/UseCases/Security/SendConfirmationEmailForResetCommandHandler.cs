@@ -25,7 +25,7 @@ namespace Library.Application.UseCases.Security
         public async Task Handle(SendConfirmationEmailForResetCommand request, CancellationToken cancellationToken)
         {
             var user = await _context.Users.FirstOrDefaultAsync(x => x.Email == request.Email, cancellationToken);
-    
+            _logger.LogInformation("not implemented");
         }
     }
 }

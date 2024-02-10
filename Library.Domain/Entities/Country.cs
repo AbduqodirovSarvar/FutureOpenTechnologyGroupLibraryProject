@@ -12,5 +12,7 @@ namespace Library.Domain.Entities
         public Country() : base(){ }
 
         public Country(string name) : base(name) { }
+
+        public ICollection<City> Cities { get; set; } = new HashSet<City>();
     }
 }

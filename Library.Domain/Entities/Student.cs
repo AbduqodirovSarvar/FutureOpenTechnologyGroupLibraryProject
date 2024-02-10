@@ -14,5 +14,7 @@ namespace Library.Domain.Entities
         public Student(string fullName, string email)
             :base(fullName, email) 
         { }
+
+        public ICollection<StudentAddress> StudentAddresses { get; set; } = new HashSet<StudentAddress>();
     }
 }

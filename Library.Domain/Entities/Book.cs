@@ -23,5 +23,7 @@ namespace Library.Domain.Entities
         public Genre? Genre { get; set; }
         public Guid PublisherId { get; set; }
         public Publisher? Publisher { get; set; }
+
+        public ICollection<BookAuthor> Authors { get; set; } = new HashSet<BookAuthor>();
     }
 }
