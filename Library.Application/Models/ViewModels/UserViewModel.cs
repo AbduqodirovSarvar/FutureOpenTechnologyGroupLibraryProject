@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 namespace Library.Application.Models.ViewModels
 {
     public record UserViewModel
-                        (
-                        Guid Id,
-                        string FullName,
-                        string Email,
-                        string Login,
-                        string RoleName
-                        );
+         (
+              Guid Id,
+              string FullName,
+              string Email,
+              string Login,
+              string RoleName,
+              DateTime CreatedTime
+        );
 }
