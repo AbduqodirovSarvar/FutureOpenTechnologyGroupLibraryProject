@@ -1,0 +1,58 @@
+﻿using AutoMapper;
+using Library.Application.Abstractions;
+using Library.Application.Exceptions;
+using Library.Application.Models.ViewModels;
+using Library.Domain.Exceptions;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Library.Application.UseCases.Security
+{
+    public class AuthLoginCommandHandler : IRequestHandler<AuthLoginCommand, LoginViewModel>
+    {
+        private readonly IAuthService _authService;
+        private readonly IAppDbContext _context;
+        private readonly ILogger<AuthLoginCommandHandler> _logger;
+        private readonly IMapper _mapper;
+        public AuthLoginCommandHandler(
+            IAuthService authService,
+            IAppDbContext context,
+            ILogger<AuthLoginCommandHandler> logger,
+            IMapper mapper
+            )
+        {
+            _authService = authService;
+            _context = context;
+            _logger = logger;
+            _mapper = mapper;
+        }
+        public async Task<LoginViewModel> Handle(AuthLoginCommand request, CancellationToken cancellationToken)
+        {
+            var user = await _context.Users
+                                     .FirstOrDefaultAsync(x => x.Login == request.Login, cancellationToken)
+                                     ?? throw new LoginException();
+
+            if (!_authService.VerifyPasswordHash(request.Password, user.PasswordHash))
+            {
+                throw new LoginException();
+            }
+
+            var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                    new Claim(ClaimTypes.Role, user.Role.ToString())
+                };
+
+            _logger.LogInformation("An access token has been issued to the identifier ID: {Identifier}", user.Id);
+
+            return new LoginViewModel(_authService.GetAccessToken(claims.ToArray()), _mapper.Map<UserViewModel>(user));
+        }
+    }
+}
