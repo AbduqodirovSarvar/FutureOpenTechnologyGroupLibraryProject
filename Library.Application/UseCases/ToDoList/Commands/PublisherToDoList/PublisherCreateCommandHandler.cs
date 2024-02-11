@@ -4,11 +4,6 @@ using Library.Application.Models.ViewModels;
 using Library.Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.Application.UseCases.ToDoList.Commands.PublisherToDoList
 {
@@ -43,7 +38,6 @@ namespace Library.Application.UseCases.ToDoList.Commands.PublisherToDoList
                 ApartmentNumber = request.ApartmentNumber
             }, cancellationToken);
 
-            await _context.PublisherAddresses.AddAsync(new PublisherAddress(publisher.Id, address.Id), cancellationToken);
             await _context.SaveChangesAsync(cancellationToken);
 
             return _mapper.Map<PublisherViewModel>(publisher);

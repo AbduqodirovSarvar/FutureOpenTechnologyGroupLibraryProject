@@ -1,9 +1,4 @@
 ﻿using Library.Domain.Abstractions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.Domain.Entities
 {
@@ -12,7 +7,7 @@ namespace Library.Domain.Entities
         public City() { }
 
         public City(string name, Guid countryId)
-            :base(name)
+            : base(name)
         {
             CountryId = countryId;
         }

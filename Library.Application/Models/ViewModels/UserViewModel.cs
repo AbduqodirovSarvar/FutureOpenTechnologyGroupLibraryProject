@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Library.Application.Models.ViewModels
+﻿namespace Library.Application.Models.ViewModels
 {
     public class UserViewModel
     {

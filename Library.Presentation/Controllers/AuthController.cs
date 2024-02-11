@@ -2,11 +2,6 @@
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.Presentation.Controllers
 {
@@ -14,7 +9,7 @@ namespace Library.Presentation.Controllers
     [ApiController]
     public class AuthController : ApiController
     {
-        public AuthController(IMediator mediator) 
+        public AuthController(IMediator mediator)
             : base(mediator) { }
 
         [HttpPost]

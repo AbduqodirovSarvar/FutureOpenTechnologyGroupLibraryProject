@@ -1,16 +1,8 @@
-﻿using Library.Application.UseCases.Security;
-using Library.Application.UseCases.ToDoList.Commands.BookToDoList;
-using Library.Application.UseCases.ToDoList.Commands.StudentToDoList;
+﻿using Library.Application.UseCases.ToDoList.Commands.BookToDoList;
 using Library.Application.UseCases.ToDoList.Queries.BookToDoList;
-using Library.Application.UseCases.ToDoList.Queries.StudentToDoList;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.Presentation.Controllers
 {
@@ -19,7 +11,7 @@ namespace Library.Presentation.Controllers
     [Authorize(Policy = "AdminActions")]
     public class BookController : ApiController
     {
-        public BookController(IMediator mediator) 
+        public BookController(IMediator mediator)
             : base(mediator)
         { }
 

@@ -1,9 +1,4 @@
 ﻿using Library.Domain.Abstractions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.Domain.Entities
 {
@@ -19,12 +14,12 @@ namespace Library.Domain.Entities
             PublisherId = publisherId;
         }
         public string Title { get; set; } = null!;
-        public Guid GenreId {  get; set; }
+        public Guid GenreId { get; set; }
         public Genre? Genre { get; set; }
         public Guid PublisherId { get; set; }
         public Publisher? Publisher { get; set; }
 
         public ICollection<BookAuthor> Authors { get; set; } = new HashSet<BookAuthor>();
-        public ICollection<BorrowingRecord> BorrowingRecords { get; set;} = new HashSet<BorrowingRecord>();
+        public ICollection<BorrowingRecord> BorrowingRecords { get; set; } = new HashSet<BorrowingRecord>();
     }
 }

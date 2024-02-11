@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Library.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240210232854_Initial")]
+    [Migration("20240211082036_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -508,12 +508,12 @@ namespace Library.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("657eae54-8252-428c-8fda-0392dd35ba1a"),
-                            CreatedTime = new DateTime(2024, 2, 10, 23, 28, 54, 431, DateTimeKind.Utc).AddTicks(745),
+                            Id = new Guid("7d7c358c-4fbf-4453-bdf3-d60b22a49cf9"),
+                            CreatedTime = new DateTime(2024, 2, 11, 8, 20, 36, 117, DateTimeKind.Utc).AddTicks(17),
                             Email = "superadmin@gmail.com",
                             FullName = "SuperAdmin",
                             Login = "superadmin",
-                            PasswordHash = "+X7sOjCTL80q4oUmaEKJI5yYsgRfeOX+fSolc71M0ebHs8VH8o1FJB9CDyUEOj1Vc8LkqoCpw02ihR5MsDOIdQ==",
+                            PasswordHash = "d8bILkRojwbZmmjQZ1b5+LLIfZIJcuaMSkm3SjIUvqygHadT+k12X0ttkTSq+GQAFL657xN2G7HiibQaMN8Wfg==",
                             Role = 2
                         });
                 });

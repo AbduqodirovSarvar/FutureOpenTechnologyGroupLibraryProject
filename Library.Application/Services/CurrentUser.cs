@@ -1,12 +1,6 @@
 ﻿using Library.Application.Abstractions;
-using Library.Domain.Enums;
 using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.Application.Services
 {
@@ -29,7 +23,7 @@ namespace Library.Application.Services
 
         }
         //public UserRole UserRole { get; set; }
-        public Guid UserId {  get; set; }
+        public Guid UserId { get; set; }
 
     }
 }

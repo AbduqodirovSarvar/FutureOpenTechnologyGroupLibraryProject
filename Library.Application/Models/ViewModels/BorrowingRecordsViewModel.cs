@@ -1,11 +1,4 @@
-﻿using Library.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Library.Application.Models.ViewModels
+﻿namespace Library.Application.Models.ViewModels
 {
     public record BorrowingRecordsViewModel
     {
@@ -16,8 +9,8 @@ namespace Library.Application.Models.ViewModels
         public BookViewModel Book { get; init; } = null!;
         public int Quantity { get; init; }
         public DateOnly DeadLine { get; init; }
-        public bool IsReturned {  get; init; }
-        public decimal FineForBooks {  get; init; }
-        public DateTime CreatedTime {  get; init; }
+        public bool IsReturned { get; init; }
+        public decimal FineForBooks { get; init; }
+        public DateTime CreatedTime { get; init; }
     }
 }

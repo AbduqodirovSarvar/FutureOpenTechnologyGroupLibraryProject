@@ -5,11 +5,6 @@ using Library.Domain.Entities;
 using Library.Domain.Exceptions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.Application.UseCases.ToDoList.Commands.BorrowingToDoList
 {
@@ -29,7 +24,7 @@ namespace Library.Application.UseCases.ToDoList.Commands.BorrowingToDoList
 
             borrow.Deadline = request.Deadline ?? borrow.Deadline;
             borrow.Quantity = request.Quantity ?? borrow.Quantity;
-            if(request.IsReturned)
+            if (request.IsReturned)
             {
                 borrow.IsReturned = request.IsReturned;
                 borrow.FineForBooks = 10000 * (DateOnly.FromDateTime(DateTime.UtcNow).DayNumber - borrow.Deadline.DayNumber);

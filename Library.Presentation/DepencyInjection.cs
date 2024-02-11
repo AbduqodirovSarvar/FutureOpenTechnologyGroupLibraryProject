@@ -7,11 +7,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.Json.Serialization;
 
 namespace Library.Presentation
 {
@@ -26,12 +22,20 @@ namespace Library.Presentation
                     .AddJsonOptions(options =>
                     {
                         options.JsonSerializerOptions.Converters.Add(new DateOnlyJsonConverter());
+                        //options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+                        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+                        options.JsonSerializerOptions.WriteIndented = true;
                     });
+            /*services.AddControllers().AddNewtonsoftJson(options =>
+            {
+                options.SerializerSettings.PreserveReferencesHandling = PreserveReferencesHandling.Objects;
+            });*/
+
         }
 
         public static void PresentationLayerWebApplicationServices(this WebApplication app)
         {
-            
+
 
             using var scope = app.Services.CreateScope();
             var services = scope.ServiceProvider;

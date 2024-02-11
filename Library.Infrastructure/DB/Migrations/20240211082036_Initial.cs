@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -409,7 +408,7 @@ namespace Library.Infrastructure.Migrations
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "CreatedById", "CreatedTime", "Email", "FullName", "Login", "PasswordHash", "Role" },
-                values: new object[] { new Guid("657eae54-8252-428c-8fda-0392dd35ba1a"), null, new DateTime(2024, 2, 10, 23, 28, 54, 431, DateTimeKind.Utc).AddTicks(745), "superadmin@gmail.com", "SuperAdmin", "superadmin", "+X7sOjCTL80q4oUmaEKJI5yYsgRfeOX+fSolc71M0ebHs8VH8o1FJB9CDyUEOj1Vc8LkqoCpw02ihR5MsDOIdQ==", 2 });
+                values: new object[] { new Guid("7d7c358c-4fbf-4453-bdf3-d60b22a49cf9"), null, new DateTime(2024, 2, 11, 8, 20, 36, 117, DateTimeKind.Utc).AddTicks(17), "superadmin@gmail.com", "SuperAdmin", "superadmin", "d8bILkRojwbZmmjQZ1b5+LLIfZIJcuaMSkm3SjIUvqygHadT+k12X0ttkTSq+GQAFL657xN2G7HiibQaMN8Wfg==", 2 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Addresss_CreatedById",

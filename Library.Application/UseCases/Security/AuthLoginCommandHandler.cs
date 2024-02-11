@@ -3,16 +3,10 @@ using Library.Application.Abstractions;
 using Library.Application.Exceptions;
 using Library.Application.Models.ViewModels;
 using Library.Domain.Enums;
-using Library.Domain.Exceptions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.Application.UseCases.Security
 {
@@ -51,12 +45,12 @@ namespace Library.Application.UseCases.Security
                     new Claim(ClaimTypes.Role, user.Role.ToString())
                 };
 
-            if(user.Role == UserRole.SuperAdmin)
+            if (user.Role == UserRole.SuperAdmin)
             {
                 claims.Add(new Claim(ClaimTypes.Role, UserRole.Admin.ToString()));
                 claims.Add(new Claim(ClaimTypes.Role, UserRole.None.ToString()));
             }
-            if(user.Role == UserRole.Admin)
+            if (user.Role == UserRole.Admin)
             {
                 claims.Add(new Claim(ClaimTypes.Role, UserRole.None.ToString()));
             }

@@ -6,11 +6,6 @@ using Library.Domain.Exceptions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.Application.UseCases.Security
 {
@@ -41,7 +36,7 @@ namespace Library.Application.UseCases.Security
             var user = await _context.Users
                                     .FirstOrDefaultAsync(x => x.Email == request.Email && x.Login == request.Email, cancellationToken);
 
-            if( user != null )
+            if (user != null)
             {
                 throw new AlreadyExistsException<User>();
             }

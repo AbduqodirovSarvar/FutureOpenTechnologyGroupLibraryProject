@@ -1,10 +1,5 @@
 ﻿using Library.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.Application.Abstractions
 {
@@ -15,7 +10,7 @@ namespace Library.Application.Abstractions
         DbSet<StudentAddress> StudentAddresses { get; set; }
         DbSet<Address> Addresss { get; set; }
         DbSet<PublisherAddress> PublisherAddresses { get; set; }
-        DbSet<Publisher> Publishers {  get; set; }
+        DbSet<Publisher> Publishers { get; set; }
         DbSet<ContactInformation> ContactInformations { get; set; }
         DbSet<Country> Countries { get; set; }
         DbSet<City> Cities { get; set; }
