@@ -2,6 +2,8 @@
 {
     public interface IEmailService
     {
-        bool SendEmail(string toEmail, string subject, string body);
+        Task<bool> SendEmail(string email, string subject, string body);
+        Task<bool> SendEmailConfirmed(string email);
+        bool CheckEmailConfirmed(string email, string confirmationCode);
     }
 }

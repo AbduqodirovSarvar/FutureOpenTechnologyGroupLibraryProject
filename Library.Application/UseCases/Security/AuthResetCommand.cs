@@ -11,6 +11,8 @@ namespace Library.Application.UseCases.Security
         [Required]
         public string NewPassword { get; set; } = null!;
         [Required]
+        public string ConfirmNewPassword { get; set; } = null!;
+        [Required]
         public int ConfirmationCode { get; set; }
     }
 }

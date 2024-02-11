@@ -22,9 +22,12 @@ namespace Library.Application.UseCases.Security
         {
             var user = await _context.Users.FirstOrDefaultAsync(x => x.Email == request.Email, cancellationToken) ?? throw new NotFoundException<User>();
 
-            user.PasswordHash = _authService.GetPasswordHash(request.NewPassword);
-
-            return (await _context.SaveChangesAsync(cancellationToken)) > 0;
+            if (_emailService.CheckEmailConfirmed(user.Email, request.ConfirmationCode.ToString()) && request.NewPassword == request.ConfirmNewPassword)
+            {
+                user.PasswordHash = _authService.GetPasswordHash(request.NewPassword);
+                return (await _context.SaveChangesAsync(cancellationToken)) > 0;
+            }
+            return false;
         }
     }
 }
