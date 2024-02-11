@@ -33,5 +33,5 @@ services:
       - library
 
 networks:
-  network_for_portfolio:
-    driver: library
+  library:
+    driver: bridge
