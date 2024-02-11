@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 namespace Library.Application.Models.ViewModels
 {
     public record StudentViewModel
-        (
-            Guid Id,
-            string FullName,
-            string Email,
-            ICollection<AddressViewModel> Addresses,
-            ICollection<BorrowingRecordsViewModel> Borrows,
-            DateTime CreatedTime
-        );
+    {
+        public Guid Id { get; set; }
+        public string FullName { get; set; }
+        public string Email {  get; set; }
+        public ICollection<AddressViewModel> Addresses {  get; set; } = new HashSet<AddressViewModel>();
+        public ICollection<BorrowingRecordsViewModel> Borrows { get; set; } = new HashSet<BorrowingRecordsViewModel>();
+        public DateTime CreatedTime { get; set; }
+    }
 }

@@ -17,7 +17,7 @@ namespace Library.Application.Mapings
                 .ForMember(x => x.RoleName, y => y.MapFrom(z => z.Role.ToString()));
             CreateMap<Address, AddressViewModel>()
                 .ForMember(x => x.RegionName, y => y.MapFrom(z => z.Region != null ? z.Region.Name : null))
-                .ForMember(x => x.Cityid, y => y.MapFrom(z => z.Region != null ? z.Region.CityId : (Guid?)null))
+                .ForMember(x => x.CityId, y => y.MapFrom(z => z.Region != null ? z.Region.CityId : (Guid?)null))
                 .ForMember(x => x.CityName, y => y.MapFrom(z => (z.Region != null && z.Region.City != null) ? z.Region.City.Name : null))
                 .ForMember(x => x.CountryId, y => y.MapFrom(z => (z.Region != null && z.Region.City != null) ? z.Region.City.CountryId : (Guid?)null))
                 .ForMember(x => x.CountryName, y => y.MapFrom(z => z.Region != null ? z.Region.City : null))

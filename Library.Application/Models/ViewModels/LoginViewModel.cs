@@ -6,5 +6,14 @@ using System.Threading.Tasks;
 
 namespace Library.Application.Models.ViewModels
 {
-    public record LoginViewModel(string AccessToken, UserViewModel User);
+    public record LoginViewModel
+    {
+        public LoginViewModel(string accessToken, UserViewModel user)
+        {
+            AccessToken = accessToken;
+            User = user;
+        }
+        public string AccessToken { get; init; } = null!;
+        public UserViewModel User { get; init; } = null!;
+    }
 }
