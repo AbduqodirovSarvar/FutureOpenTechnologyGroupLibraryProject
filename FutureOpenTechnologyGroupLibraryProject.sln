@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{733E01E6-278A-4D2B-BDB0-AD51A2CB23DA}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{AD55B764-B65F-4C1B-975C-61BE18A46BC9}"
 EndProject
@@ -13,11 +16,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Domain", "Library.D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Application", "Library.Application\Library.Application.csproj", "{5F85E7F5-E3F5-48B7-B060-495A9E404175}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Infrastructure", "Library.Infrastructure\Library.Infrastructure.csproj", "{C55573AE-F337-49C8-B412-5994FDB0623D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Infrastructure", "Library.Infrastructure\Library.Infrastructure.csproj", "{C55573AE-F337-49C8-B412-5994FDB0623D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Presentation", "Library.Presentation\Library.Presentation.csproj", "{1283B97C-B5DC-4B39-BEB8-6F777672B9AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Presentation", "Library.Presentation\Library.Presentation.csproj", "{1283B97C-B5DC-4B39-BEB8-6F777672B9AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.WebApi", "Library.WebApi\Library.WebApi.csproj", "{367B1D79-66AA-4F11-9706-8CA21A6908B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.WebApi", "Library.WebApi\Library.WebApi.csproj", "{367B1D79-66AA-4F11-9706-8CA21A6908B2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nginx", "nginx", "{38880B6F-EE59-4CC8-8385-F535BBA8B2B5}"
+	ProjectSection(SolutionItems) = preProject
+		Dockerfile = Dockerfile
+		nginx.conf = nginx.conf
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

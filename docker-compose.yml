@@ -1,0 +1,37 @@
+version: '3.9'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Library.WebApi/Dockerfile
+    container_name: web
+    restart: always
+    volumes:
+      - /root/DB:/app/DB
+    ports:
+      - "5147:5147"
+    environment:
+      - ASPNETCORE_URLS=http://+:5147
+      - ConnectionStrings__SQLiteConnection=Data Source=/app/DB/Library.db
+      - JWTConfiguration__ValidAudience=https://library-test.sarvarbekabduqodirov.uz
+      - JWTConfiguration__ValidIssuer=https://library-test.sarvarbekabduqodirov.uz
+      - JWTConfiguration__Secret=Secret_is_UUID_:_5f6615ee-d58f-49e3-adb5-33bf6912d692
+    networks:
+      - library
+
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nginx_container
+    ports:
+      - "443:443"
+    volumes:
+      - /etc/letsencrypt/:/etc/letsencrypt/
+    networks:
+      - library
+
+networks:
+  network_for_portfolio:
+    driver: library
